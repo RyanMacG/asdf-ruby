@@ -180,10 +180,13 @@ get_download_url() {
   local ruby_type=$(get_ruby_type $version)
   local ruby_version=$(get_ruby_version $version)
   local ruby_1_9_3=$ruby_version | grep "1.9.3"
+  local ruby_2_1=$ruby_version | grep "2.1"
 
   if [ "${ruby_type}" = "ruby" ]; then
     if [ "$ruby_1_9_3" == true ]; then
       echo "https://cache.ruby-lang.org/pub/ruby/1.9/ruby-${ruby_version}.tar.gz"
+    elif [ "$ruby_2_1" == true ]; then
+      echo "https://cache.ruby-lang.org/pub/ruby/2.1/ruby-${ruby_version}.tar.gz"
     else
       echo "https://cache.ruby-lang.org/pub/ruby/ruby-${ruby_version}.tar.gz"
     fi
